@@ -6,7 +6,50 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { rhythm, scale } from '../utils/typography';
 
-const BlogPostTemplate = ({ data, pageContext, location }) => {
+interface Props {
+  data: {
+    site: {
+      siteMetadata: {
+        title: string;
+      };
+    };
+    markdownRemark: {
+      html: string;
+      excerpt: string;
+      frontmatter: {
+        title: string;
+        date: Date;
+        description: string;
+      };
+      fields: {
+        slug: string;
+      }[];
+    };
+  };
+  location: {
+    pathname: string;
+  };
+  pageContext: {
+    previous: {
+      fields: {
+        slug: string;
+      };
+      frontmatter: {
+        title: string;
+      };
+    };
+    next: {
+      fields: {
+        slug: string;
+      };
+      frontmatter: {
+        title: string;
+      };
+    };
+  };
+}
+
+const BlogPostTemplate: React.FC<Props> = ({ data, pageContext, location }) => {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata.title;
   const { previous, next } = pageContext;
