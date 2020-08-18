@@ -1,6 +1,6 @@
 ---
 title: Layout - Header, Main, Footer
-date: "2020-08-18T00:30:34.284Z"
+date: "2020-08-17T22:15:34.284Z"
 description: "Explicando um Layout simples para páginas com header, main e footer"
 ---
 
