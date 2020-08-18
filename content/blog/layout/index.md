@@ -1,7 +1,7 @@
 ---
 title: Layout - Header, Main, Footer
 date: "2020-08-18T00:30:34.284Z"
-description: "Hello World"
+description: "Explicando um Layout simples para páginas com header, main e footer"
 ---
 
 Como meu primeiro post do blog vou mostrar uma estrutura de layout que ando utilizando quando preciso de um layout com `header`, `main` e `footer`.
