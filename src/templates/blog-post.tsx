@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import styled from 'styled-components';
 
 import Bio from '../components/bio';
 import Layout from '../components/layout';
@@ -51,6 +52,13 @@ interface Props {
   };
 }
 
+const Section = styled.section`
+  code {
+    font-size: 19px;
+    background-color: #f4f4f4;
+  }
+`;
+
 const Post: React.FC<Props> = ({ data, pageContext, location }) => {
   const post = data.mdx;
   const siteTitle = data.site.siteMetadata.title;
@@ -82,9 +90,9 @@ const Post: React.FC<Props> = ({ data, pageContext, location }) => {
             {post.frontmatter.date}
           </p>
         </header>
-        <section>
+        <Section>
           <MDXRenderer>{data.mdx.body}</MDXRenderer>
-        </section>
+        </Section>
         <hr
           style={{
             marginBottom: rhythm(1),
