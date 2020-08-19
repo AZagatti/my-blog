@@ -158,6 +158,7 @@ module.exports = {
         ],
       },
     },
+    'gatsby-remark-reading-time',
     {
       resolve: `gatsby-plugin-disqus`,
       options: {

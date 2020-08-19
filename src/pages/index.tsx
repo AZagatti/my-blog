@@ -16,7 +16,7 @@ interface Props {
     allMdx: {
       edges: {
         node: {
-          fields: { slug: string };
+          fields: { slug: string; readingTime: { minutes: number } };
           frontmatter: {
             title: string;
             date: string;
@@ -55,6 +55,7 @@ const BlogIndex: React.FC<Props> = ({ data, location }) => {
                 </Link>
               </h3>
               <small>{node.frontmatter.date}</small>
+              <small>{Math.ceil(node.fields.readingTime.minutes)}</small>
             </header>
             <section>
               <p
@@ -91,6 +92,9 @@ export const query = graphql`
           }
           fields {
             slug
+            readingTime {
+              minutes
+            }
           }
         }
       }

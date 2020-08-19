@@ -27,6 +27,9 @@ interface Props {
       };
       fields: {
         slug: string;
+        readingTime: {
+          minutes: number;
+        };
       };
     };
   };
@@ -94,7 +97,9 @@ const Post: React.FC<Props> = ({ data, pageContext, location }) => {
             }}
           >
             {post.frontmatter.date}
+            {Math.ceil(post.fields.readingTime.minutes)}
           </p>
+          <CommentCount config={disqusConfig} placeholder="..." />
         </header>
         <Section>
           <MDXRenderer>{data.mdx.body}</MDXRenderer>
@@ -161,6 +166,9 @@ export const pageQuery = graphql`
       }
       fields {
         slug
+        readingTime {
+          minutes
+        }
       }
     }
   }
