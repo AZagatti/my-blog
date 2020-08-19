@@ -1,48 +1,63 @@
-const { createFilePath } = require('gatsby-source-filesystem');
+const path = require(`path`);
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
-exports.createPages = async ({ graphql, actions: { createPage } }) => {
-  const PostComponent = require.resolve('./src/templates/blog-post.tsx');
-  const query = await graphql(`
-    {
-      allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
-        edges {
-          node {
-            frontmatter {
-              title
-              date(fromNow: true)
-            }
-            fields {
-              slug
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
+
+  const blogPost = path.resolve(`./src/templates/blog-post.tsx`);
+  const result = await graphql(
+    `
+      {
+        allMdx(
+          sort: { fields: [frontmatter___date], order: DESC }
+          limit: 1000
+        ) {
+          edges {
+            node {
+              frontmatter {
+                title
+                date(fromNow: true)
+              }
+              fields {
+                slug
+              }
             }
           }
         }
       }
-    }
-  `);
+    `,
+  );
 
-  const posts = query.data.allMdx.edges;
+  if (result.errors) {
+    throw result.errors;
+  }
 
-  for (const [index, { node: post }] of posts.entries()) {
-    const prev = posts[index - 1] ? posts[index - 1].node : null;
-    const next = posts[index + 1] ? posts[index + 1].node : null;
-    const slug = post.fields.slug;
+  // Create blog posts pages.
+  const posts = result.data.allMdx.edges;
+
+  posts.forEach((post, index) => {
+    const previous = index === posts.length - 1 ? null : posts[index + 1].node;
+    const next = index === 0 ? null : posts[index - 1].node;
+
     createPage({
-      component: PostComponent,
-      path: `/posts${slug}`,
+      path: post.node.fields.slug,
+      component: blogPost,
       context: {
-        slug,
-        prev,
+        slug: post.node.fields.slug,
+        previous,
         next,
       },
     });
-  }
+  });
 };
 
-exports.onCreateNode = ({ node, actions: { createNodeField }, getNode }) => {
-  if (node.internal.type === 'Mdx') {
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions;
+
+  if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode });
     createNodeField({
-      name: 'slug',
+      name: `slug`,
       node,
       value,
     });
