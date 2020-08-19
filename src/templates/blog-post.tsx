@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { Disqus, CommentCount } from 'gatsby-plugin-disqus';
 import styled from 'styled-components';
 
 import Bio from '../components/bio';
@@ -63,6 +64,11 @@ const Post: React.FC<Props> = ({ data, pageContext, location }) => {
   const post = data.mdx;
   const siteTitle = data.site.siteMetadata.title;
   const { previous, next } = pageContext;
+  const disqusConfig = {
+    url: `https://blog.azagatti.dev${location.pathname}`,
+    identifier: data.mdx.frontmatter.title,
+    title: data.site.siteMetadata.title,
+  };
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -101,6 +107,8 @@ const Post: React.FC<Props> = ({ data, pageContext, location }) => {
         <footer>
           <Bio />
         </footer>
+
+        <Disqus config={disqusConfig} />
       </article>
 
       <nav>
