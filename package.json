@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "my-blog",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "AZagatti's personal blog",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "André Zagatti <contato@azagatti.dev>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/azagatti/my-blog/issues"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.7",
@@ -15,7 +15,7 @@
     "gatsby-plugin-feed": "^2.5.7",
     "gatsby-plugin-google-analytics": "^2.3.6",
     "gatsby-plugin-manifest": "^2.4.14",
-    "gatsby-plugin-offline": "^3.2.13",
+    "gatsby-plugin-offline": "^3.2.23",
     "gatsby-plugin-react-helmet": "^3.3.6",
     "gatsby-plugin-sharp": "^2.6.14",
     "gatsby-plugin-styled-components": "^3.3.9",
@@ -57,7 +57,7 @@
     "prettier": "^2.0.5",
     "typescript": "^3.9.6"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/azagatti/my-blog#readme",
   "keywords": [
     "gatsby"
   ],
@@ -65,11 +65,11 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/azagatti/my-blog.git"
   },
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop -p 3000",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
