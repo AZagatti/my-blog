@@ -55,7 +55,9 @@ const BlogIndex: React.FC<Props> = ({ data, location }) => {
                 </Link>
               </h3>
               <small>{node.frontmatter.date}</small>
-              <small>{Math.ceil(node.fields.readingTime.minutes)}</small>
+              <small style={{ marginLeft: 8 }}>
+                {`${Math.ceil(node.fields.readingTime.minutes)} min de leitura`}
+              </small>
             </header>
             <section>
               <p

@@ -81,6 +81,7 @@ const Post: React.FC<Props> = ({ data, pageContext, location }) => {
       />
       <article>
         <header>
+          <CommentCount config={disqusConfig} placeholder="..." />
           <h1
             style={{
               marginTop: rhythm(1),
@@ -97,9 +98,11 @@ const Post: React.FC<Props> = ({ data, pageContext, location }) => {
             }}
           >
             {post.frontmatter.date}
-            {Math.ceil(post.fields.readingTime.minutes)}
+
+            <span style={{ marginLeft: 8 }}>
+              {`${Math.ceil(post.fields.readingTime.minutes)} min de leitura`}
+            </span>
           </p>
-          <CommentCount config={disqusConfig} placeholder="..." />
         </header>
         <Section>
           <MDXRenderer>{data.mdx.body}</MDXRenderer>
