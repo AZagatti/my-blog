@@ -13,17 +13,15 @@ interface Props {
         title: string;
       };
     };
-    allMarkdownRemark: {
+    allMdx: {
       edges: {
         node: {
-          excerpt: string;
+          fields: { slug: string };
           frontmatter: {
             title: string;
-            date: Date;
+            date: string;
+            tags: string[];
             description: string;
-          };
-          fields: {
-            slug: string;
           };
         };
       }[];
@@ -36,7 +34,7 @@ interface Props {
 
 const BlogIndex: React.FC<Props> = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
-  const posts = data.allMarkdownRemark.edges;
+  const posts = data.allMdx.edges;
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -61,7 +59,7 @@ const BlogIndex: React.FC<Props> = ({ data, location }) => {
             <section>
               <p
                 dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
+                  __html: node.frontmatter.description,
                 }}
               />
             </section>
@@ -74,24 +72,25 @@ const BlogIndex: React.FC<Props> = ({ data, location }) => {
 
 export default BlogIndex;
 
-export const pageQuery = graphql`
-  query {
+export const query = graphql`
+  {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
-          excerpt
+          frontmatter {
+            title
+            rawDate: date
+            date(formatString: "MMMM Do, YYYY")
+            description
+            tags
+          }
           fields {
             slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
           }
         }
       }
