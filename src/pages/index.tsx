@@ -88,7 +88,7 @@ export const query = graphql`
           frontmatter {
             title
             rawDate: date
-            date(formatString: "MMMM Do, YYYY")
+            date(formatString: "DD [de] MMMM, YYYY", locale: "pt-BR")
             description
             tags
           }
