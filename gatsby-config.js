@@ -3,7 +3,7 @@ module.exports = {
     title: "AZagatti's Blog",
     author: {
       name: 'André Luis Zagatti Adorna',
-      summary: 'web and mobile developer.',
+      summary: 'frontend software engineer.',
     },
     description: 'André Zagatti personal blog.',
     siteUrl: 'https://blog.azagatti.dev/',
