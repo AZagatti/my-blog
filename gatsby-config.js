@@ -9,6 +9,7 @@ module.exports = {
     siteUrl: 'https://blog.azagatti.dev/',
     social: {
       twitter: 'andre_zagatti',
+      linkedin: 'andre-zagatti',
     },
   },
   plugins: [
@@ -71,7 +72,7 @@ module.exports = {
         background_color: '#ffffff',
         theme_color: '#663399',
         display: 'minimal-ui',
-        icon: 'content/assets/gatsby-icon.png',
+        icon: 'content/assets/azagatti-logo.png',
       },
     },
     'gatsby-plugin-react-helmet',

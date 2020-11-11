@@ -29,6 +29,7 @@ const Bio: React.FC = () => {
           }
           social {
             twitter
+            linkedin
           }
         }
       }
@@ -57,10 +58,22 @@ const Bio: React.FC = () => {
         }}
       />
       <p>
-        Written by <strong>{author.name}</strong> {author.summary}
+        Escrito por <strong>{author.name}</strong> {author.summary}
         {` `}
-        <a href={`https://twitter.com/${social.twitter}`}>
-          You should follow him on Twitter
+        <a
+          target="_blank"
+          rel="noreferrer noopener"
+          href={`https://twitter.com/${social.twitter}`}
+        >
+          Você pode segui-lo no twitter
+        </a>
+        {` ou `}
+        <a
+          target="_blank"
+          rel="noreferrer noopener"
+          href={`https://linkedin.com/in/${social.linkedin}`}
+        >
+          no Linkedin
         </a>
       </p>
     </div>

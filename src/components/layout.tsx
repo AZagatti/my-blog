@@ -66,9 +66,9 @@ const Layout: React.FC<Props> = ({ location, title, children }) => {
       <header>{header}</header>
       <main>{children}</main>
       <footer>
-        © {new Date().getFullYear()}, Built with
+        © {new Date().getFullYear()}, Made with ❤️
         {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
+        <a href="https://www.linkedin.com/in/andre-zagatti">André Zagatti</a>
       </footer>
     </div>
   );
