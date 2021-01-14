@@ -31,6 +31,7 @@ const SEO: React.FC<SEOProps> = ({
             description
             social {
               twitter
+              github
             }
           }
         }
@@ -79,6 +80,10 @@ const SEO: React.FC<SEOProps> = ({
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        {
+          name: `github:creator`,
+          content: site.siteMetadata.social.github,
         },
       ].concat(meta)}
     />

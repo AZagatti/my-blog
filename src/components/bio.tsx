@@ -29,6 +29,7 @@ const Bio: React.FC = () => {
           }
           social {
             twitter
+            github
             linkedin
           }
         }
@@ -63,9 +64,9 @@ const Bio: React.FC = () => {
         <a
           target="_blank"
           rel="noreferrer noopener"
-          href={`https://twitter.com/${social.twitter}`}
+          href={`https://github.com/${social.github}`}
         >
-          Você pode segui-lo no twitter
+          Você pode segui-lo no github
         </a>
         {` ou `}
         <a
