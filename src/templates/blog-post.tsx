@@ -32,6 +32,13 @@ interface Props {
         };
       };
     };
+    file: {
+      childImageSharp: {
+        fluid: {
+          src: string;
+        };
+      };
+    };
   };
   location: {
     pathname: string;
@@ -66,6 +73,7 @@ const Section = styled.section`
 const Post: React.FC<Props> = ({ data, pageContext, location }) => {
   const post = data.mdx;
   const siteTitle = data.site.siteMetadata.title;
+  const image = `https://blog.azagatti.dev${data.file.childImageSharp.fluid.src}`;
   const { previous, next } = pageContext;
   const disqusConfig = {
     url: `https://blog.azagatti.dev${location.pathname}`,
@@ -78,6 +86,7 @@ const Post: React.FC<Props> = ({ data, pageContext, location }) => {
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description}
+        image={image}
       />
       <article>
         <header>
@@ -152,10 +161,17 @@ const Post: React.FC<Props> = ({ data, pageContext, location }) => {
 export default Post;
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostBySlug($slug: String!, $image: String!) {
     site {
       siteMetadata {
         title
+      }
+    }
+    file(relativePath: { eq: $image }) {
+      childImageSharp {
+        fluid {
+          src
+        }
       }
     }
     mdx(fields: { slug: { eq: $slug } }) {

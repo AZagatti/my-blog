@@ -46,6 +46,7 @@ exports.createPages = async ({ graphql, actions }) => {
         slug: post.node.fields.slug,
         previous,
         next,
+        image: `${post.node.fields.slug.substr(1)}${post.node.fields.slug.replace(/\//g, "")}.png`,
       },
     });
   });
