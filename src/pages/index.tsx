@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 
+import logo from '../assets/logo.png';
 import Bio from '../components/bio';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -38,7 +39,7 @@ const BlogIndex: React.FC<Props> = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="Todos os posts" />
+      <SEO title="Todos os posts" image={logo} />
       <Bio />
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug;
