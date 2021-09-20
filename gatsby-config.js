@@ -59,12 +59,6 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: 'UA-176080246-2',
-      },
-    },
-    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: "AZagatti's personal blog",
@@ -77,6 +71,12 @@ module.exports = {
       },
     },
     'gatsby-plugin-react-helmet',
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: ['G-0ND2RF1GPR'],
+      },
+    },
     {
       resolve: 'gatsby-plugin-typography',
       options: {
